@@ -64,6 +64,45 @@ function MoneyCard({ label, value, sub }: { label: string; value: string; sub?: 
   );
 }
 
+function SupportCard() {
+  // Replace each href="#" with the real contact link/number.
+  const channels = [
+    { icon: "💬", label: "Admin (WhatsApp)", value: "ISI: nomor/link WA admin", href: "#" },
+    { icon: "👥", label: "Grup WA Kreator", value: "ISI: link grup WA Imely", href: "#" },
+    { icon: "🎮", label: "Discord", value: "ISI: link Discord program", href: "#" },
+  ];
+  return (
+    <section className="rounded-2xl bg-white border border-ink/5 p-5 space-y-3">
+      <div className="flex items-center gap-2">
+        <span className="text-xl">🆘</span>
+        <h2 className="font-bold">Butuh bantuan?</h2>
+      </div>
+      <p className="text-xs text-muted">
+        Ada pertanyaan soal pendaftaran, karya, atau pembayaran? Hubungi kami.
+      </p>
+      <div className="grid gap-2 sm:grid-cols-3">
+        {channels.map((c) => (
+          <a
+            key={c.label}
+            href={c.href}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-xl border border-ink/10 p-3 hover:border-teal/40 hover:bg-teal/[0.03] transition"
+          >
+            <div className="flex items-center gap-2">
+              <span className="text-lg">{c.icon}</span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-ink">{c.label}</p>
+                <p className="text-[11px] text-muted truncate">{c.value}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function StatPill({
   label,
   value,
@@ -248,6 +287,8 @@ export default function Home() {
           </div>
         </>
       )}
+
+      <SupportCard />
     </div>
   );
 }

@@ -126,6 +126,10 @@ export default function Layout({ children }: { children: ReactNode }) {
                     </div>
                   )}
                 </div>
+                <Link to="/admin/pengaturan"
+                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${pathname === "/admin/pengaturan" ? "bg-teal text-white" : "text-muted hover:text-ink hover:bg-ink/5"}`}>
+                  Pengaturan
+                </Link>
               </nav>
               <div className="pl-3 border-l border-ink/10">
                 <AccountMenu />

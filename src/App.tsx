@@ -12,6 +12,7 @@ import Riwayat from "./pages/Riwayat";
 import { AdminApprovals, AdminCharacters, AdminVideos } from "./pages/Admin";
 import Confirmed from "./pages/auth/Confirmed";
 import LupaPassword from "./pages/auth/LupaPassword";
+import AdminSettings from "./pages/AdminSettings";
 import ResetPassword from "./pages/auth/ResetPassword";
 
 export default function App() {
@@ -35,6 +36,7 @@ export default function App() {
           <Route path="/admin/persetujuan" element={<RequireAdmin><Layout><AdminApprovals /></Layout></RequireAdmin>} />
           <Route path="/admin/karakter" element={<RequireAdmin><Layout><AdminCharacters /></Layout></RequireAdmin>} />
           <Route path="/admin/video" element={<RequireAdmin><Layout><AdminVideos /></Layout></RequireAdmin>} />
+          <Route path="/admin/pengaturan" element={<RequireAdmin><Layout><AdminSettings /></Layout></RequireAdmin>} />
 
           {/* Auth email-link landings — NOT PublicOnly (they carry a session) */}
           <Route path="/auth/confirmed" element={<Confirmed />} />

@@ -430,29 +430,43 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="border-t border-ink/10 bg-cream">
-        <div className="mx-auto max-w-4xl px-5 py-10 text-sm text-muted">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="mx-auto max-w-4xl px-5 py-10">
+          <div className="flex flex-col items-center gap-5 text-center">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-mint to-teal text-ink font-extrabold text-sm">
                 i
               </span>
               <span className="font-bold text-ink">Imely Creator Program</span>
             </div>
-            <a
-              href="https://imely.ai"
-              target="_blank"
-              rel="noreferrer"
-              className="text-teal-dark font-semibold hover:underline"
-            >
+
+            {/* Social icon row — fills wrap cleanly on mobile.
+                Replace each href="#" with the real link. */}
+            <div className="flex flex-wrap items-center justify-center gap-2.5">
+              <a href="#" target="_blank" rel="noreferrer" title="ISI: TikTok Imely"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white border border-ink/10 px-3.5 py-2 text-sm font-semibold text-ink hover:border-teal/40 hover:text-teal-dark transition">
+                🎵 TikTok
+              </a>
+              <a href="#" target="_blank" rel="noreferrer" title="ISI: Instagram Imely"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white border border-ink/10 px-3.5 py-2 text-sm font-semibold text-ink hover:border-teal/40 hover:text-teal-dark transition">
+                📸 Instagram
+              </a>
+              <a href="#" target="_blank" rel="noreferrer" title="ISI: Facebook Imely"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white border border-ink/10 px-3.5 py-2 text-sm font-semibold text-ink hover:border-teal/40 hover:text-teal-dark transition">
+                👍 Facebook
+              </a>
+              <a href="#" target="_blank" rel="noreferrer" title="ISI: Discord komunitas"
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white border border-ink/10 px-3.5 py-2 text-sm font-semibold text-ink hover:border-teal/40 hover:text-teal-dark transition">
+                💬 Discord
+              </a>
+            </div>
+
+            <a href="https://imely.ai" target="_blank" rel="noreferrer"
+              className="text-teal-dark font-semibold hover:underline text-sm">
               imely.ai
             </a>
-          </div>
-          <div className="mt-4 rounded-xl border border-dashed border-teal/40 bg-teal/[0.04] p-3">
-            <span className="block text-[10px] font-bold uppercase tracking-wide text-teal-dark mb-1">
-              ⚠ ISI: Discord program (kontak)
-            </span>
-            <p className="text-sm text-muted">
-              Link/username Discord untuk kontak kreator.
+
+            <p className="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-1.5">
+              ⚠ Ganti href="#" tiap ikon dengan link asli sebelum publish
             </p>
           </div>
         </div>
