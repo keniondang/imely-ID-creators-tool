@@ -15,7 +15,7 @@ export function PublicOnly({ children }: { children: ReactNode }) {
   const { session, profile, loading } = useAuth();
   if (loading) return <FullScreen>Memuat…</FullScreen>;
   if (session && profile) {
-    return <Navigate to={profile.role === "admin" ? "/admin" : "/app"} replace />;
+    return <Navigate to={profile.role === "admin" ? "/app" : "/app"} replace />;
   }
   return <>{children}</>;
 }
