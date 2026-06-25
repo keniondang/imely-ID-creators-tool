@@ -14,6 +14,7 @@ export default {
       },
       fontFamily: {
         sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        display: ["Space Grotesk", "system-ui", "sans-serif"],
       },
       keyframes: {
         "aurora-1": {
@@ -32,12 +33,17 @@ export default {
           "0%,100%": { transform: "translateY(0) rotate(-2deg)" },
           "50%": { transform: "translateY(-12px) rotate(2deg)" },
         },
+        "bounce-slow": {
+          "0%,100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(6px)" },
+        },
       },
       animation: {
         "aurora-1": "aurora-1 14s ease-in-out infinite",
         "aurora-2": "aurora-2 18s ease-in-out infinite",
         "rise": "rise 0.7s cubic-bezier(0.22,1,0.36,1) both",
         "float": "float 6s ease-in-out infinite",
+        "bounce-slow": "bounce-slow 2s ease-in-out infinite",
       },
     },
   },

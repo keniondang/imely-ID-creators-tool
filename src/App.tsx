@@ -14,6 +14,10 @@ import Confirmed from "./pages/auth/Confirmed";
 import LupaPassword from "./pages/auth/LupaPassword";
 import AdminSettings from "./pages/AdminSettings";
 import ResetPassword from "./pages/auth/ResetPassword";
+import Tentang from "./pages/public/Tentang";
+import Kontak from "./pages/public/Kontak";
+import ProgramKarakter from "./pages/public/ProgramKarakter";
+import ProgramKonten from "./pages/public/ProgramKonten";
 
 export default function App() {
   return (
@@ -24,6 +28,10 @@ export default function App() {
           <Route path="/" element={<PublicOnly><Landing /></PublicOnly>} />
           <Route path="/masuk" element={<PublicOnly><Masuk /></PublicOnly>} />
           <Route path="/daftar" element={<PublicOnly><Daftar /></PublicOnly>} />
+          <Route path="/tentang" element={<PublicOnly><Tentang /></PublicOnly>} />
+          <Route path="/kontak" element={<PublicOnly><Kontak /></PublicOnly>} />
+          <Route path="/programs/karakter" element={<PublicOnly><ProgramKarakter /></PublicOnly>} />
+          <Route path="/programs/konten" element={<PublicOnly><ProgramKonten /></PublicOnly>} />
 
           {/* Authenticated creator area */}
           <Route path="/app" element={<RequireAuth><Layout><Home /></Layout></RequireAuth>} />
