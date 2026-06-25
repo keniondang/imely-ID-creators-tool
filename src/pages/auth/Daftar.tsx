@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import { isUnder18 } from "../../lib/age";
 import { stashPendingProfile } from "../../lib/pendingProfile";
+import Logo from "../../components/Logo";
 
 type Form = {
   email: string;
@@ -211,13 +212,9 @@ export default function Daftar() {
 
       <div className="w-full max-w-md space-y-6">
         <Link to="/" className="animate-rise flex items-center gap-2 justify-center">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-teal text-ink font-extrabold">
-            i
-          </span>
-          <span className="font-extrabold tracking-tight text-lg">
-            Imely <span className="text-mint">Creator</span>
-          </span>
+          <Logo size={32} variant="light" />
         </Link>
+
 
         {done ? (
           <div className="animate-rise rounded-3xl bg-white/5 backdrop-blur border border-white/10 p-7 text-center space-y-3">

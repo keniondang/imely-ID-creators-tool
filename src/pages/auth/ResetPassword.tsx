@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import Logo from "../../components/Logo";
+
 
 export default function ResetPassword() {
   const nav = useNavigate();
@@ -36,9 +38,8 @@ export default function ResetPassword() {
       </div>
 
       <div className="w-full max-w-sm space-y-6">
-        <Link to="/" className="flex items-center gap-2 justify-center">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-teal text-ink font-extrabold">i</span>
-          <span className="font-extrabold tracking-tight text-lg">Imely <span className="text-mint">Creator</span></span>
+        <Link to="/" className="animate-rise flex items-center gap-2 justify-center">
+          <Logo size={32} variant="light" />
         </Link>
 
         <div className="rounded-3xl bg-white/5 backdrop-blur border border-white/10 p-7 space-y-5 shadow-2xl">

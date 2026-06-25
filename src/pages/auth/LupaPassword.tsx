@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import Logo from "../../components/Logo";
+
 
 export default function LupaPassword() {
   const [email, setEmail] = useState("");
@@ -28,8 +30,7 @@ export default function LupaPassword() {
 
       <div className="w-full max-w-sm space-y-6">
         <Link to="/" className="animate-rise flex items-center gap-2 justify-center">
-          <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-teal text-ink font-extrabold">i</span>
-          <span className="font-extrabold tracking-tight text-lg">Imely <span className="text-mint">Creator</span></span>
+          <Logo size={32} variant="light" />
         </Link>
 
         {sent ? (

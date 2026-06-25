@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../lib/AuthContext";
+import Logo from "./Logo";
 
 const creatorNav = [
   { to: "/app", label: "Beranda" },
@@ -87,12 +88,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <header className="sticky top-0 z-30 bg-cream/90 backdrop-blur border-b border-ink/5">
         <div className="mx-auto max-w-5xl px-4 h-14 flex items-center justify-between">
           <Link to="/app" className="flex items-center gap-2">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-mint to-teal text-ink font-extrabold text-sm">
-              i
-            </span>
-            <span className="font-extrabold tracking-tight">
-              Imely <span className="text-teal">Creator</span>
-            </span>
+            <Logo variant="dark" />
           </Link>
 
           {isAdmin ? (

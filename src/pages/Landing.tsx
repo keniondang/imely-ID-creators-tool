@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../components/Logo";
 
 /* Reveal-on-scroll hook */
 function useReveal<T extends HTMLElement>() {
@@ -103,12 +104,7 @@ export default function Landing() {
         <header className="relative z-10">
           <div className="mx-auto max-w-5xl px-5 h-16 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-mint to-teal text-ink font-extrabold">
-                i
-              </span>
-              <span className="font-extrabold tracking-tight text-lg">
-                Imely <span className="text-mint">Creator</span>
-              </span>
+              <Logo size={32} variant="light" />
             </div>
             <Link
               to="/masuk"
@@ -433,10 +429,7 @@ export default function Landing() {
         <div className="mx-auto max-w-4xl px-5 py-10">
           <div className="flex flex-col items-center gap-5 text-center">
             <div className="flex items-center gap-2">
-              <span className="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-mint to-teal text-ink font-extrabold text-sm">
-                i
-              </span>
-              <span className="font-bold text-ink">Imely Creator Program</span>
+              <Logo variant="dark" />
             </div>
 
             {/* Social icon row — fills wrap cleanly on mobile.
