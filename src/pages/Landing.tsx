@@ -173,10 +173,12 @@ export default function Landing() {
               <div className="relative mx-auto w-64">
                 <div className="absolute inset-0 -z-10 rounded-[2.5rem] bg-gradient-to-br from-mint/40 to-cyan/30 blur-2xl" />
                 <div className="animate-float rounded-[2.5rem] bg-gradient-to-br from-teal to-cyan p-8 shadow-2xl">
-                  <div className="aspect-square rounded-[2rem] bg-ink/90 flex items-center justify-center">
-                    <span className="text-7xl font-extrabold text-mint select-none">
-                      i
-                    </span>
+                  <div className="aspect-square rounded-[2rem] bg-ink/90 flex items-center justify-center p-6">
+                    <img
+                      src="/logo.png"
+                      alt="Imely"
+                      className="w-full h-full object-contain select-none"
+                    />
                   </div>
                 </div>
               </div>
