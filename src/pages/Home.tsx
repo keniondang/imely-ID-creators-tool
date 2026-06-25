@@ -177,7 +177,7 @@ function SheetSync() {
 }
 
 export default function Home() {
-  const { profile, session } = useAuth();
+  const { profile } = useAuth();
   const isAdmin = profile?.role === "admin";
   const status = profile?.account_status;
 
