@@ -276,27 +276,49 @@ export default function ProgramKarakter() {
           </Reveal>
           <div className="mt-10 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal to-teal-dark p-8 h-full">
-                <div className="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-white/10 blur-2xl" />
-                <p className="text-white/70 text-sm font-semibold uppercase tracking-wide">Per karakter disetujui</p>
-                <p className="mt-2 text-5xl font-extrabold">Rp 45.000</p>
-                <p className="mt-3 text-white/70 leading-relaxed">
-                  Dibayar untuk tiap karakter yang lolos review dan masuk ke app.
-                </p>
+              <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-teal/20 blur-3xl" />
+                <div className="relative">
+                  <p className="text-mint text-sm font-semibold uppercase tracking-wide">Per karakter disetujui</p>
+                  <p className="mt-2 text-5xl font-extrabold text-mint">Rp 45.000</p>
+                  <p className="mt-3 text-white/60 leading-relaxed">
+                    Dibayar untuk tiap karakter yang lolos review dan masuk ke app.
+                  </p>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-dark to-ink border border-mint/20 p-8 h-full">
-                <div className="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-mint/15 blur-2xl" />
-                <p className="text-mint text-sm font-semibold uppercase tracking-wide">Bonus Breakout</p>
-                <p className="mt-2 text-5xl font-extrabold text-mint">Rp 1.000.000</p>
-                <p className="mt-3 text-white/70 leading-relaxed">
-                  Kalau karaktermu mencapai 500.000 pesan dari user. Reward buat
-                  karakter yang beneran meledak.
-                </p>
+              <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-mint/20 blur-3xl" />
+                <div className="relative">
+                  <p className="text-mint text-sm font-semibold uppercase tracking-wide">Bonus Breakout</p>
+                  <p className="mt-2 text-5xl font-extrabold text-mint">Rp 1.000.000</p>
+                  <p className="mt-3 text-white/60 leading-relaxed">
+                    Kalau karaktermu mencapai 500.000 pesan dari user. Reward buat
+                    karakter yang beneran meledak.
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
+
+          {/* no earning cap */}
+          <Reveal delay={200}>
+            <div className="mt-6 relative overflow-hidden rounded-3xl border border-mint/20 bg-gradient-to-r from-mint/[0.08] to-cyan/[0.06] p-8">
+              <div className="pointer-events-none absolute -top-16 -right-10 h-48 w-48 rounded-full bg-mint/15 blur-3xl" />
+              <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <p className="text-mint text-sm font-semibold uppercase tracking-wide">Potensi pendapatan</p>
+                  <p className="mt-1 text-5xl font-extrabold bg-gradient-to-r from-mint to-cyan bg-clip-text text-transparent">Tanpa batas</p>
+                </div>
+                <p className="text-white/60 font-medium leading-relaxed max-w-xs">
+                  Nggak ada batasan jumlah karakter. Makin banyak karakter yang
+                  lolos, makin besar penghasilanmu — plus bonus Breakout tiap kali
+                  ada yang meledak.
+                </p>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -378,14 +400,15 @@ export default function ProgramKarakter() {
       <section className="pb-28">
         <div className="mx-auto max-w-5xl px-5">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-teal via-teal-dark to-cyan-dark p-10 sm:p-16 text-center">
-              <div className="pointer-events-none absolute -top-1/3 -right-1/4 h-[30rem] w-[30rem] rounded-full bg-white/10 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cream via-mint/90 to-teal-light p-10 sm:p-16 text-center">
+              <div className="pointer-events-none absolute -top-1/3 -right-1/4 h-[30rem] w-[30rem] rounded-full bg-white/40 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-1/3 -left-1/4 h-[28rem] w-[28rem] rounded-full bg-teal/30 blur-3xl" />
               <div className="relative">
-                <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-ink">
                   Siap bikin karaktermu?
                 </h2>
-                <p className="mt-5 text-white/80 text-lg">Daftar gratis, mulai berkarya hari ini.</p>
-                <Link to="/daftar" className="mt-9 inline-flex items-center justify-center rounded-full bg-white px-10 py-4 text-teal-dark font-bold text-lg shadow-2xl hover:-translate-y-0.5 transition-all">
+                <p className="mt-5 text-ink/70 text-lg font-medium">Daftar gratis, mulai berkarya hari ini.</p>
+                <Link to="/daftar" className="mt-9 inline-flex items-center justify-center rounded-full bg-ink px-10 py-4 text-white font-bold text-lg shadow-2xl shadow-ink/30 hover:-translate-y-0.5 hover:bg-ink/90 transition-all">
                   Daftar sekarang →
                 </Link>
               </div>

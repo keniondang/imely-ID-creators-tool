@@ -116,40 +116,44 @@ export default function ProgramKonten() {
           </Reveal>
           <div className="mt-10 grid md:grid-cols-2 gap-6">
             <Reveal>
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cyan to-cyan-dark p-8 h-full text-ink">
-                <div className="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-white/20 blur-2xl" />
-                <p className="text-ink/70 text-sm font-semibold uppercase tracking-wide">Per video disetujui</p>
-                <p className="mt-2 text-5xl font-extrabold">Rp 40.000</p>
-                <p className="mt-3 text-ink/70 leading-relaxed">
-                  Dibayar untuk tiap video yang lolos review.
-                </p>
+              <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-cyan/20 blur-3xl" />
+                <div className="relative">
+                  <p className="text-cyan text-sm font-semibold uppercase tracking-wide">Per video disetujui</p>
+                  <p className="mt-2 text-5xl font-extrabold text-cyan">Rp 40.000</p>
+                  <p className="mt-3 text-white/60 leading-relaxed">
+                    Dibayar untuk tiap video yang lolos review.
+                  </p>
+                </div>
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-teal-dark to-ink border border-cyan/20 p-8 h-full">
-                <div className="pointer-events-none absolute -top-12 -right-12 h-40 w-40 rounded-full bg-cyan/15 blur-2xl" />
-                <p className="text-cyan text-sm font-semibold uppercase tracking-wide">Bonus views</p>
-                <p className="mt-2 text-5xl font-extrabold text-cyan">+Rp 20.000</p>
-                <p className="mt-3 text-white/70 leading-relaxed">
-                  Setiap kelipatan 3.000 views, hingga maksimal Rp 200.000 per
-                  video. Makin banyak yang nonton, makin gede bayaranmu.
-                </p>
+              <div className="relative h-full overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8">
+                <div className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-teal/20 blur-3xl" />
+                <div className="relative">
+                  <p className="text-cyan text-sm font-semibold uppercase tracking-wide">Bonus views</p>
+                  <p className="mt-2 text-5xl font-extrabold text-cyan">+Rp 20.000</p>
+                  <p className="mt-3 text-white/60 leading-relaxed">
+                    Setiap kelipatan 3.000 views, hingga maksimal Rp 200.000 per
+                    video. Makin banyak yang nonton, makin gede bayaranmu.
+                  </p>
+                </div>
               </div>
             </Reveal>
           </div>
 
           {/* total earning potential */}
           <Reveal delay={200}>
-            <div className="mt-6 relative overflow-hidden rounded-3xl bg-gradient-to-r from-mint to-cyan p-8 text-ink">
-              <div className="pointer-events-none absolute -top-16 -right-10 h-48 w-48 rounded-full bg-white/25 blur-2xl" />
+            <div className="mt-6 relative overflow-hidden rounded-3xl border border-cyan/20 bg-gradient-to-r from-cyan/[0.08] to-mint/[0.06] p-8">
+              <div className="pointer-events-none absolute -top-16 -right-10 h-48 w-48 rounded-full bg-cyan/15 blur-3xl" />
               <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <p className="text-ink/70 text-sm font-semibold uppercase tracking-wide">Total potensi pendapatan</p>
-                  <p className="mt-1 text-5xl font-extrabold">Hingga Rp 3.600.000</p>
+                  <p className="text-cyan text-sm font-semibold uppercase tracking-wide">Total potensi pendapatan</p>
+                  <p className="mt-1 text-5xl font-extrabold bg-gradient-to-r from-cyan to-mint bg-clip-text text-transparent">Hingga Rp 3.000.000</p>
                 </div>
-                <p className="text-ink/80 font-medium leading-relaxed max-w-xs">
-                  Maksimal 15 video per kreator dalam program ini — masing-masing
-                  bisa sampai Rp 200.000 + Rp 40.000 per video disetujui.
+                <p className="text-white/60 font-medium leading-relaxed max-w-xs">
+                  Setara 15 video per kreator dalam program ini — masing-masing bisa
+                  sampai Rp 200.000.
                 </p>
               </div>
             </div>
@@ -280,14 +284,15 @@ export default function ProgramKonten() {
       <section className="pb-28">
         <div className="mx-auto max-w-5xl px-5">
           <Reveal>
-            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cyan via-teal-dark to-ink p-10 sm:p-16 text-center">
-              <div className="pointer-events-none absolute -top-1/3 -right-1/4 h-[30rem] w-[30rem] rounded-full bg-cyan/15 blur-3xl" />
+            <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cream via-cyan/80 to-cyan p-10 sm:p-16 text-center">
+              <div className="pointer-events-none absolute -top-1/3 -right-1/4 h-[30rem] w-[30rem] rounded-full bg-white/40 blur-3xl" />
+              <div className="pointer-events-none absolute -bottom-1/3 -left-1/4 h-[28rem] w-[28rem] rounded-full bg-teal-light/40 blur-3xl" />
               <div className="relative">
-                <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+                <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-ink">
                   Siap bikin konten Imely?
                 </h2>
-                <p className="mt-5 text-white/80 text-lg">Daftar gratis, mulai berkarya hari ini.</p>
-                <Link to="/daftar" className="mt-9 inline-flex items-center justify-center rounded-full bg-white px-10 py-4 text-teal-dark font-bold text-lg shadow-2xl hover:-translate-y-0.5 transition-all">
+                <p className="mt-5 text-ink/70 text-lg font-medium">Daftar gratis, mulai berkarya hari ini.</p>
+                <Link to="/daftar" className="mt-9 inline-flex items-center justify-center rounded-full bg-ink px-10 py-4 text-white font-bold text-lg shadow-2xl shadow-ink/30 hover:-translate-y-0.5 hover:bg-ink/90 transition-all">
                   Daftar sekarang →
                 </Link>
               </div>
