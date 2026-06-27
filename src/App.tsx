@@ -18,11 +18,13 @@ import Tentang from "./pages/public/Tentang";
 import Kontak from "./pages/public/Kontak";
 import ProgramKarakter from "./pages/public/ProgramKarakter";
 import ProgramKonten from "./pages/public/ProgramKonten";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+      <ScrollToTop />
         <Routes>
           {/* Public-only: logged-in users get bounced to their dashboard */}
           <Route path="/" element={<PublicOnly><Landing /></PublicOnly>} />
