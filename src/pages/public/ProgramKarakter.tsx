@@ -218,15 +218,42 @@ export default function ProgramKarakter() {
           </Reveal>
           <div className="mt-10 grid sm:grid-cols-3 gap-5">
             {[
-              ["🪄", "Bikin karakter", "Rancang avatar, kepribadian, dan gaya bicara unik untuk setiap karakter."],
-              ["🌍", "Bangun cerita & dunianya", "Tulis lore, latar belakang, dan dialog pembuka supaya karakter langsung terasa hidup di percakapan pertama."],
-              ["📣", "Tumbuhkan fanbase", "Sebarkan karaktermu, ajak user pertama untuk mencoba, dan bangun komunitas di sekitar karakter itu."],
-            ].map(([icon, t, d], i) => (
-              <Reveal key={t} delay={i * 100}>
+              {
+                t: "Bikin karakter",
+                d: "Rancang avatar, kepribadian, dan gaya bicara unik untuk setiap karakter.",
+                icon: (
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden="true">
+                    <path d="M12 2a5 5 0 0 1 5 5v1a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5Zm-7 18a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Z" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Bangun cerita & dunianya",
+                d: "Tulis lore, latar belakang, dan dialog pembuka supaya karakter langsung terasa hidup di percakapan pertama.",
+                icon: (
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Tumbuhkan fanbase",
+                d: "Sebarkan karaktermu, ajak user pertama untuk mencoba, dan bangun komunitas di sekitar karakter itu.",
+                icon: (
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
+                    <path d="M3 11l18-8-8 18-2-7-8-3Z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+            ].map((c, i) => (
+              <Reveal key={c.t} delay={i * 100}>
                 <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-mint/30 hover:bg-white/[0.04] transition-all">
-                  <span className="text-3xl">{icon}</span>
-                  <h3 className="mt-4 font-bold text-lg text-mint">{t}</h3>
-                  <p className="mt-2 text-white/60 leading-relaxed text-sm">{d}</p>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-mint/15 text-mint">
+                    {c.icon}
+                  </span>
+                  <h3 className="mt-4 font-bold text-lg text-mint">{c.t}</h3>
+                  <p className="mt-2 text-white/60 leading-relaxed text-sm">{c.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -235,7 +262,7 @@ export default function ProgramKarakter() {
       </section>
 
       {/* ===== WHO WE LOOK FOR ===== */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-24 border-t border-white/10">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-2">
@@ -267,8 +294,8 @@ export default function ProgramKarakter() {
         </div>
       </section>
 
-      {/* ===== PAYMENT STRUCTURE ===== */}
-      <section className="py-16 sm:py-24">
+      {/* ===== WHO WE LOOK FOR ===== */}
+      <section className="py-16 sm:py-24 border-t border-white/10">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>
             <p className="text-mint font-semibold tracking-widest text-xs uppercase mb-3">Pembayaran</p>
@@ -397,7 +424,7 @@ export default function ProgramKarakter() {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="pb-28">
+      <section className="pt-16 sm:pt-24 pb-28 border-t border-white/10">
         <div className="mx-auto max-w-5xl px-5">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cream via-mint/90 to-teal-light p-10 sm:p-16 text-center">

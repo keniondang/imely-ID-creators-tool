@@ -90,7 +90,8 @@ export default function Landing() {
       </section>
 
       {/* ===== PROGRAMS TEASER ===== */}
-      <section className="py-24 sm:py-32">
+      {/* ===== PROGRAMS TEASER ===== */}
+      <section className="py-24 sm:py-32 border-t border-white/10">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>
             <div className="max-w-2xl mb-14">
@@ -181,7 +182,7 @@ export default function Landing() {
       </section>
 
       {/* ===== ABOUT + CONTACT TEASER ===== */}
-      <section className="pb-24 sm:pb-32">
+      <section className="pt-24 sm:pt-32 pb-24 sm:pb-32 border-t border-white/10">
         <div className="mx-auto max-w-6xl px-5">
           <Reveal>
             <div className="max-w-2xl mb-10">
@@ -224,7 +225,7 @@ export default function Landing() {
       </section>
 
       {/* ===== FINAL CTA ===== */}
-      <section className="pb-28">
+      <section className="pt-24 sm:pt-32 pb-28 border-t border-white/10">
         <div className="mx-auto max-w-5xl px-5">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cream via-mint/90 to-teal-light p-10 sm:p-16 text-center">

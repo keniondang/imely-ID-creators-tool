@@ -8,8 +8,24 @@ const navLinks = [
 ];
 
 const programLinks = [
-  { to: "/programs/karakter", label: "Kreator Karakter", icon: "🎭" },
-  { to: "/programs/konten", label: "Kreator Konten", icon: "🎬" },
+  {
+    to: "/programs/karakter",
+    label: "Kreator Karakter",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+        <path d="M12 2a5 5 0 0 1 5 5v1a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5Zm-7 18a7 7 0 0 1 14 0v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-1Z" />
+      </svg>
+    ),
+  },
+  {
+    to: "/programs/konten",
+    label: "Kreator Konten",
+    icon: (
+      <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+        <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+      </svg>
+    ),
+  },
 ];
 
 export default function PublicLayout({ children }: { children: ReactNode }) {
@@ -85,7 +101,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
                         pathname === p.to ? "text-mint" : "text-white/80"
                       }`}
                     >
-                      <span className="text-lg">{p.icon}</span>
+                      <span className="text-white/70">{p.icon}</span>
                       {p.label}
                     </Link>
                   ))}
@@ -128,7 +144,7 @@ export default function PublicLayout({ children }: { children: ReactNode }) {
               {programLinks.map((p) => (
                 <Link key={p.to} to={p.to}
                   className={`flex items-center gap-2 py-2.5 ${pathname === p.to ? "text-mint" : "text-white/80"}`}>
-                  <span>{p.icon}</span> {p.label}
+                  <span className="text-white/70">{p.icon}</span>
                 </Link>
               ))}
               <Link to="/masuk"

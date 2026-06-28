@@ -60,15 +60,42 @@ export default function ProgramKonten() {
           </Reveal>
           <div className="mt-10 grid sm:grid-cols-3 gap-5">
             {[
-              ["🎬", "Bikin video TikTok", "Review dan kenalkan Imely dengan gaya kreatifmu sendiri — bebas, tanpa skrip yang mengikat."],
-              ["🎮", "Coba app & kasih feedback", "Akses awal ke aplikasi sambil bantu kami menyempurnakan produk."],
-              ["🌱", "Bangun komunitas", "Ajak penggemar AI chat masuk ke dunia Imely sejak hari pertama."],
-            ].map(([icon, t, d], i) => (
-              <Reveal key={t} delay={i * 100}>
+              {
+                t: "Bikin video TikTok",
+                d: "Review dan kenalkan Imely dengan gaya kreatifmu sendiri — bebas, tanpa skrip yang mengikat.",
+                icon: (
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-current" aria-hidden="true">
+                    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Coba app & kasih feedback",
+                d: "Akses awal ke aplikasi sambil bantu kami menyempurnakan produk.",
+                icon: (
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+              {
+                t: "Bangun komunitas",
+                d: "Ajak penggemar AI chat masuk ke dunia Imely sejak hari pertama.",
+                icon: (
+                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
+                    <circle cx="9" cy="8" r="3" />
+                    <path d="M3 19a6 6 0 0 1 12 0M16 6a3 3 0 0 1 0 6M21 19a5 5 0 0 0-4-4.9" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ),
+              },
+            ].map((c, i) => (
+              <Reveal key={c.t} delay={i * 100}>
                 <div className="h-full rounded-2xl border border-white/10 bg-white/[0.02] p-6 hover:border-cyan/30 hover:bg-white/[0.04] transition-all">
-                  <span className="text-3xl">{icon}</span>
-                  <h3 className="mt-4 font-bold text-lg text-cyan">{t}</h3>
-                  <p className="mt-2 text-white/60 leading-relaxed text-sm">{d}</p>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan/15 text-cyan">
+                    {c.icon}
+                  </span>
+                  <h3 className="mt-4 font-bold text-lg text-cyan">{c.t}</h3>
+                  <p className="mt-2 text-white/60 leading-relaxed text-sm">{c.d}</p>
                 </div>
               </Reveal>
             ))}
@@ -77,7 +104,7 @@ export default function ProgramKonten() {
       </section>
 
       {/* ===== WHO WE LOOK FOR ===== */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-24 border-t border-white/10">
         <div className="mx-auto max-w-4xl px-5">
           <Reveal>
             <div className="text-center max-w-2xl mx-auto mb-2">
@@ -281,7 +308,7 @@ export default function ProgramKonten() {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="pb-28">
+      <section className="pt-16 sm:pt-24 pb-28 border-t border-white/10">
         <div className="mx-auto max-w-5xl px-5">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-cream via-cyan/80 to-cyan p-10 sm:p-16 text-center">
