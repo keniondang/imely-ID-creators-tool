@@ -205,49 +205,6 @@ export default function Kontak() {
         </div>
       </section>
 
-      {/* ===== LOCATION / MAP ===== */}
-      <section className="py-16 sm:py-24 border-t border-white/10">
-        <div className="mx-auto max-w-5xl px-5">
-          <Reveal>
-            <div className="max-w-2xl mb-12">
-              <p className="text-mint font-semibold tracking-widest text-xs uppercase mb-3">Lokasi</p>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Di mana kami</h2>
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className="grid lg:grid-cols-[1fr_1.4fr] gap-6 items-stretch">
-              {/* address card */}
-              <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-7 flex flex-col justify-center">
-                <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-mint/15 text-mint">
-                  <svg viewBox="0 0 24 24" className="h-6 w-6 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
-                    <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z" strokeLinejoin="round" />
-                    <circle cx="12" cy="10" r="2.5" />
-                  </svg>
-                </span>
-                <h3 className="mt-5 text-xl font-bold">Alamat</h3>
-                <p className="mt-2 text-white/70 leading-relaxed">
-                  A2 1908 Golden King Building, 15 Nguyen Luong Bang, Tan My Ward,
-                  Ho Chi Minh City, Vietnam
-                </p>
-              </div>
-
-              {/* map embed pointing at the real address */}
-              <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] min-h-[280px]">
-                <iframe
-                  title="Lokasi Imely"
-                  src="https://www.google.com/maps?q=A2%201908%20Golden%20King%20Building%2C%2015%20Nguyen%20Luong%20Bang%2C%20Tan%20My%20Ward%2C%20Ho%20Chi%20Minh%20City%2C%20Vietnam&output=embed"
-                  className="w-full h-full min-h-[280px]"
-                  style={{ border: 0, filter: "grayscale(0.3) contrast(1.05)" }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ===== CTA ===== */}
       <section className="py-16 sm:py-24 border-t border-white/10">
         <div className="mx-auto max-w-5xl px-5">
