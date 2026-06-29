@@ -7,6 +7,8 @@ import { submitCharacter, submitVideo, hasPaymentInfo } from "../lib/submissions
 const input =
   "w-full rounded-xl border border-ink/15 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal/40 focus:border-transparent transition";
 const label = "text-sm font-medium text-ink/80";
+const primaryBtn =
+  "rounded-full bg-gradient-to-r from-mint to-teal px-6 py-2.5 text-ink font-bold shadow-lg shadow-teal/30 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:hover:translate-y-0";
 
 function externalUrl(raw: string): string {
   const v = (raw || "").trim();
@@ -14,6 +16,17 @@ function externalUrl(raw: string): string {
   if (/^https?:\/\//i.test(v)) return v;
   return `https://${v}`;
 }
+
+const MaskIcon = (
+  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+    <path d="M3 5h18v6a9 9 0 0 1-18 0V5Zm5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+  </svg>
+);
+const VideoIcon = (
+  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+  </svg>
+);
 
 export default function Submission() {
   const { session, profile } = useAuth();
@@ -90,7 +103,10 @@ export default function Submission() {
 
   return (
     <div className="space-y-6 max-w-2xl">
-      <h1 className="text-2xl font-extrabold text-teal-dark">Kirim Karya</h1>
+      <div>
+        <p className="text-teal-dark font-semibold tracking-widest text-xs uppercase mb-1">Kirim</p>
+        <h1 className="text-2xl font-extrabold tracking-tight">Kirim Karya</h1>
+      </div>
 
       {!active && (
         <div className="flex items-start gap-3 rounded-2xl bg-amber-50 border border-amber-200 p-4">
@@ -113,7 +129,7 @@ export default function Submission() {
             </p>
             <Link
               to="/profil"
-              className="inline-block mt-2 rounded-lg bg-amber-600 text-white px-4 py-2 text-xs font-bold hover:bg-amber-700 transition"
+              className="inline-block mt-2 rounded-full bg-amber-600 text-white px-4 py-2 text-xs font-bold hover:bg-amber-700 transition"
             >
               Isi info pembayaran →
             </Link>
@@ -130,9 +146,11 @@ export default function Submission() {
 
       {/* CHARACTER */}
       {inKarakter && (
-        <section className="rounded-2xl bg-white border border-ink/5 p-6 space-y-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">🎭</span>
+        <section className="rounded-2xl bg-white border border-ink/5 shadow-sm p-6 space-y-4">
+          <div className="flex items-center gap-2.5">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 text-teal-dark">
+              {MaskIcon}
+            </span>
             <h2 className="font-bold">Kirim Karakter</h2>
           </div>
           {canSubmit ? (
@@ -174,8 +192,7 @@ export default function Submission() {
                 </div>
               </button>
 
-              <button onClick={handleCharacter} disabled={cBusy}
-                className="rounded-xl bg-teal px-5 py-2.5 text-white font-bold hover:bg-teal-dark transition disabled:opacity-50">
+              <button onClick={handleCharacter} disabled={cBusy} className={primaryBtn}>
                 {cBusy ? "Mengirim…" : "Kirim karakter"}
               </button>
             </div>
@@ -187,9 +204,11 @@ export default function Submission() {
 
       {/* VIDEO */}
       {inKonten && (
-        <section className="rounded-2xl bg-white border border-ink/5 p-6 space-y-4">
-          <div className="flex items-center gap-2">
-            <span className="text-xl">🎬</span>
+        <section className="rounded-2xl bg-white border border-ink/5 shadow-sm p-6 space-y-4">
+          <div className="flex items-center gap-2.5">
+            <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan/10 text-cyan-dark">
+              {VideoIcon}
+            </span>
             <h2 className="font-bold">Kirim Video</h2>
           </div>
           {canSubmit ? (
@@ -209,8 +228,7 @@ export default function Submission() {
                 </label>
                 <input className={input} value={vShot} onChange={(e) => setVShot(e.target.value)} placeholder="Link gambar (Drive, imgur, dll.)" />
               </div>
-              <button onClick={handleVideo} disabled={vBusy}
-                className="rounded-xl bg-teal px-5 py-2.5 text-white font-bold hover:bg-teal-dark transition disabled:opacity-50">
+              <button onClick={handleVideo} disabled={vBusy} className={primaryBtn}>
                 {vBusy ? "Mengirim…" : "Kirim video"}
               </button>
             </div>

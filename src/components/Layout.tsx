@@ -6,7 +6,7 @@ import Logo from "./Logo";
 const creatorNav = [
   { to: "/app", label: "Beranda" },
   { to: "/profil", label: "Profil" },
-  { to: "/submission", label: "Kirim" },
+  { to: "/submission", label: "Kirim Karya"},
   { to: "/riwayat", label: "Riwayat" },
 ];
 
@@ -65,6 +65,13 @@ function AccountMenu() {
   );
 }
 
+const navLink = (active: boolean) =>
+  `px-3.5 py-1.5 rounded-full text-sm font-semibold transition ${
+    active
+      ? "bg-gradient-to-r from-mint to-teal text-ink shadow-sm shadow-teal/30"
+      : "text-muted hover:text-ink hover:bg-ink/5"
+  }`;
+
 export default function Layout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const { profile } = useAuth();
@@ -94,36 +101,37 @@ export default function Layout({ children }: { children: ReactNode }) {
           {isAdmin ? (
             <div className="flex items-center gap-3">
               <nav className="flex items-center gap-1">
-                <Link to="/app"
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${pathname === "/app" ? "bg-teal text-white" : "text-muted hover:text-ink hover:bg-ink/5"}`}>
-                  Beranda
-                </Link>
-                <Link to="/admin/persetujuan"
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${pathname === "/admin/persetujuan" ? "bg-teal text-white" : "text-muted hover:text-ink hover:bg-ink/5"}`}>
-                  Persetujuan akun
+                <Link to="/app" className={navLink(pathname === "/app")}>Beranda</Link>
+                <Link to="/admin/persetujuan" className={navLink(pathname === "/admin/persetujuan")}>
+                  Akun kreator
                 </Link>
                 <div className="relative" ref={ddRef}>
                   <button
                     onClick={() => setReviewOpen((o) => !o)}
-                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition flex items-center gap-1 ${reviewActive ? "bg-teal text-white" : "text-muted hover:text-ink hover:bg-ink/5"}`}>
+                    className={`${navLink(reviewActive)} flex items-center gap-1`}>
                     Review
                     <span className={`text-xs transition-transform ${reviewOpen ? "rotate-180" : ""}`}>▾</span>
                   </button>
                   {reviewOpen && (
-                    <div className="absolute right-0 mt-1 w-44 rounded-xl bg-white border border-ink/10 shadow-lg overflow-hidden z-40">
+                    <div className="absolute right-0 mt-2 w-48 rounded-2xl bg-white border border-ink/10 shadow-lg overflow-hidden z-40">
                       <Link to="/admin/karakter" onClick={() => setReviewOpen(false)}
-                        className={`block px-4 py-2.5 text-sm hover:bg-ink/5 ${pathname === "/admin/karakter" ? "text-teal-dark font-semibold" : "text-ink"}`}>
-                        🎭 Review karakter
+                        className={`flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-ink/5 ${pathname === "/admin/karakter" ? "text-teal-dark font-semibold" : "text-ink"}`}>
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+                          <path d="M3 5h18v6a9 9 0 0 1-18 0V5Zm5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+                        </svg>
+                        Review karakter
                       </Link>
                       <Link to="/admin/video" onClick={() => setReviewOpen(false)}
-                        className={`block px-4 py-2.5 text-sm hover:bg-ink/5 ${pathname === "/admin/video" ? "text-teal-dark font-semibold" : "text-ink"}`}>
-                        🎬 Review video
+                        className={`flex items-center gap-2.5 px-4 py-2.5 text-sm hover:bg-ink/5 ${pathname === "/admin/video" ? "text-teal-dark font-semibold" : "text-ink"}`}>
+                        <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+                          <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+                        </svg>
+                        Review video
                       </Link>
                     </div>
                   )}
                 </div>
-                <Link to="/admin/pengaturan"
-                  className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${pathname === "/admin/pengaturan" ? "bg-teal text-white" : "text-muted hover:text-ink hover:bg-ink/5"}`}>
+                <Link to="/admin/pengaturan" className={navLink(pathname === "/admin/pengaturan")}>
                   Pengaturan
                 </Link>
               </nav>
@@ -135,8 +143,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <div className="flex items-center gap-3">
               <nav className="hidden sm:flex items-center gap-1">
                 {creatorNav.map((item) => (
-                  <Link key={item.to} to={item.to}
-                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition ${pathname === item.to ? "bg-teal text-white" : "text-muted hover:text-ink hover:bg-ink/5"}`}>
+                  <Link key={item.to} to={item.to} className={navLink(pathname === item.to)}>
                     {item.label}
                   </Link>
                 ))}

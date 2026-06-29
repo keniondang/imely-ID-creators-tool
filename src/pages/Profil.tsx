@@ -1,15 +1,43 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
 import { useAuth } from "../lib/AuthContext";
+import UpdateRequestBanner from "../components/UpdateRequestBanner";
 
 const input =
   "w-full rounded-xl border border-ink/15 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal/40 focus:border-transparent transition";
 const label = "text-sm font-medium text-ink/80";
+const primaryBtn =
+  "rounded-full bg-gradient-to-r from-mint to-teal px-6 py-2.5 text-ink font-bold shadow-lg shadow-teal/30 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:hover:translate-y-0";
+const secondaryBtn =
+  "rounded-full border border-ink/15 px-6 py-2.5 text-sm font-semibold text-muted hover:text-ink hover:bg-ink/5 transition disabled:opacity-50";
 
 function initials(name?: string): string {
   if (!name) return "?";
   return name.trim().split(/\s+/).slice(0, 2).map((w) => w[0]?.toUpperCase()).join("");
 }
+
+/* ---- icons ---- */
+const UserIcon = (
+  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+    <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6Z" />
+  </svg>
+);
+const CardIcon = (
+  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current" strokeWidth="2" aria-hidden="true">
+    <rect x="2" y="5" width="20" height="14" rx="2" />
+    <path d="M2 10h20" />
+  </svg>
+);
+const MaskIcon = (
+  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+    <path d="M3 5h18v6a9 9 0 0 1-18 0V5Zm5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+  </svg>
+);
+const VideoIcon = (
+  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+  </svg>
+);
 
 /* Read-only field display */
 function Field({ label: l, value, full = false }: { label: string; value?: string | null; full?: boolean }) {
@@ -50,7 +78,7 @@ function SectionCard({
   elevated = false,
   children,
 }: {
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   desc?: string;
   editing?: boolean;
@@ -59,10 +87,10 @@ function SectionCard({
   children: React.ReactNode;
 }) {
   return (
-    <section className={`rounded-3xl p-6 space-y-4 ${elevated ? "bg-white border border-teal/20 shadow-md shadow-teal/5" : "bg-white border border-ink/5"}`}>
+    <section className={`rounded-3xl p-6 space-y-4 ${elevated ? "bg-white border border-teal/20 shadow-md shadow-teal/5" : "bg-white border border-ink/5 shadow-sm"}`}>
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-start gap-3">
-          <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-mint/20 to-teal/15 text-xl">
+          <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-mint/20 to-teal/15 text-teal-dark">
             {icon}
           </div>
           <div>
@@ -233,13 +261,14 @@ export default function Profil() {
           </div>
         </div>
       </section>
+      <UpdateRequestBanner />
 
       {msg && <p className="text-sm text-teal-dark bg-teal/10 border border-teal/20 rounded-lg px-3 py-2">{msg}</p>}
       {err && <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{err}</p>}
 
       {/* DATA DIRI + SOSIAL (one editable section) */}
       <SectionCard
-        icon="🧑"
+        icon={UserIcon}
         title="Data diri & sosial"
         desc="Informasi dasar, kontak, tautan & program."
         editing={editProfile}
@@ -292,22 +321,20 @@ export default function Profil() {
               <label className={label}>Program</label>
               <div className="flex gap-3">
                 <button type="button" onClick={() => set("program_karakter", !draft.program_karakter)}
-                  className={`rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${draft.program_karakter ? "border-teal bg-teal/10 text-teal-dark" : "border-ink/15 text-muted hover:border-ink/30"}`}>
-                  🎭 Karakter
+                  className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${draft.program_karakter ? "border-teal bg-teal/10 text-teal-dark" : "border-ink/15 text-muted hover:border-ink/30"}`}>
+                  {MaskIcon} Karakter
                 </button>
                 <button type="button" onClick={() => set("program_konten", !draft.program_konten)}
-                  className={`rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${draft.program_konten ? "border-cyan-dark bg-cyan/10 text-cyan-dark" : "border-ink/15 text-muted hover:border-ink/30"}`}>
-                  🎬 Konten
+                  className={`inline-flex items-center gap-2 rounded-xl border px-4 py-2.5 text-sm font-semibold transition ${draft.program_konten ? "border-cyan-dark bg-cyan/10 text-cyan-dark" : "border-ink/15 text-muted hover:border-ink/30"}`}>
+                  {VideoIcon} Konten
                 </button>
               </div>
             </div>
             <div className="flex gap-2">
-              <button onClick={saveProfile} disabled={saving}
-                className="rounded-xl bg-teal px-5 py-2.5 text-white font-bold hover:bg-teal-dark transition disabled:opacity-50">
+              <button onClick={saveProfile} disabled={saving} className={primaryBtn}>
                 {saving ? "Menyimpan…" : "Simpan"}
               </button>
-              <button onClick={cancelProfile} disabled={saving}
-                className="rounded-xl border border-ink/15 px-5 py-2.5 text-sm font-semibold text-muted hover:text-ink transition disabled:opacity-50">
+              <button onClick={cancelProfile} disabled={saving} className={secondaryBtn}>
                 Batal
               </button>
             </div>
@@ -317,7 +344,7 @@ export default function Profil() {
 
       {/* PEMBAYARAN */}
       <SectionCard
-        icon="💳"
+        icon={CardIcon}
         title="Info pembayaran"
         desc="Ke mana kami mengirim penghasilanmu."
         elevated
@@ -418,12 +445,10 @@ export default function Profil() {
             )}
 
             <div className="flex gap-2">
-              <button onClick={saveBanking} disabled={saving || !draft.cashout_method}
-                className="rounded-xl bg-teal px-5 py-2.5 text-white font-bold hover:bg-teal-dark transition disabled:opacity-50">
+              <button onClick={saveBanking} disabled={saving || !draft.cashout_method} className={primaryBtn}>
                 {saving ? "Menyimpan…" : "Simpan"}
               </button>
-              <button onClick={cancelBanking} disabled={saving}
-                className="rounded-xl border border-ink/15 px-5 py-2.5 text-sm font-semibold text-muted hover:text-ink transition disabled:opacity-50">
+              <button onClick={cancelBanking} disabled={saving} className={secondaryBtn}>
                 Batal
               </button>
             </div>

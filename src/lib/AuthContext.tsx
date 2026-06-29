@@ -12,7 +12,13 @@ import { flushPendingProfile } from "./pendingProfile";
 type Role = "admin" | "creator";
 type Status = "pending" | "active" | "rejected" | "inactive";
 
-type Profile = { id: string; role: Role; account_status: Status };
+type Profile = {
+  id: string;
+  role: Role;
+  account_status: Status;
+  update_requested?: boolean;
+  update_request_note?: string | null;
+};
 
 type AuthState = {
   session: Session | null;
@@ -38,7 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   async function loadProfile(uid: string) {
     const { data } = await supabase
       .from("profiles")
-      .select("id, role, account_status")
+      .select("id, role, account_status, update_requested, update_request_note")
       .eq("id", uid)
       .single();
     setProfile((data as Profile) ?? null);

@@ -65,7 +65,7 @@ function Toolbar({
     rejected: "Ditolak",
   };
   return (
-    <div className="rounded-2xl bg-white border border-ink/5 p-4 space-y-3">
+    <div className="rounded-2xl bg-white border border-ink/5 shadow-sm p-4 space-y-3">
       <div className="flex flex-wrap items-center gap-2">
         <input
           value={filters.q}
@@ -77,7 +77,7 @@ function Toolbar({
           onClick={() =>
             setFilters({ ...filters, sort: filters.sort === "newest" ? "oldest" : "newest" })
           }
-          className="rounded-xl border border-ink/15 px-3.5 py-2 text-sm font-semibold text-muted hover:text-ink transition whitespace-nowrap"
+          className="rounded-full border border-ink/15 px-4 py-2 text-sm font-semibold text-muted hover:text-ink hover:bg-ink/5 transition whitespace-nowrap"
         >
           {filters.sort === "newest" ? "↓ Terbaru" : "↑ Terlama"}
         </button>
@@ -87,8 +87,10 @@ function Toolbar({
           <button
             key={s}
             onClick={() => setFilters({ ...filters, status: s })}
-            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-              filters.status === s ? "bg-teal text-white" : "bg-cream/60 text-muted hover:text-ink"
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold transition ${
+              filters.status === s
+                ? "bg-gradient-to-r from-mint to-teal text-ink shadow-sm shadow-teal/30"
+                : "bg-cream/60 text-muted hover:text-ink"
             }`}
           >
             {statusLabel[s]}
@@ -128,7 +130,7 @@ function CharRow({ c }: { c: any }) {
   const [open, setOpen] = useState(false);
   const hasDetail = c.review_notes || c.final_amount != null || c.payment_proof;
   return (
-    <div className="rounded-xl border border-ink/5 bg-white overflow-hidden">
+    <div className="rounded-xl border border-ink/5 bg-white shadow-sm overflow-hidden">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-ink/[0.02] transition"
@@ -180,7 +182,7 @@ function VideoRow({ v }: { v: any }) {
   const [open, setOpen] = useState(false);
   const hasDetail = v.review_notes || v.final_amount != null || v.payment_proof || v.analytics_screenshot;
   return (
-    <div className="rounded-xl border border-ink/5 bg-white overflow-hidden">
+    <div className="rounded-xl border border-ink/5 bg-white shadow-sm overflow-hidden">
       <button
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-between gap-3 px-4 py-3 text-left hover:bg-ink/[0.02] transition"
@@ -229,9 +231,22 @@ function VideoRow({ v }: { v: any }) {
 }
 
 const tabCls = (active: boolean) =>
-  `px-4 py-2 rounded-xl text-sm font-semibold transition ${
-    active ? "bg-teal text-white" : "bg-white border border-ink/10 text-muted hover:text-ink"
+  `inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition ${
+    active
+      ? "bg-gradient-to-r from-mint to-teal text-ink shadow-sm shadow-teal/30"
+      : "bg-white border border-ink/10 text-muted hover:text-ink"
   }`;
+
+const MaskIcon = (
+  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+    <path d="M3 5h18v6a9 9 0 0 1-18 0V5Zm5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+  </svg>
+);
+const VideoIcon = (
+  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+  </svg>
+);
 
 export default function Riwayat() {
   const [creator, setCreator] = useState<any>(null);
@@ -262,7 +277,10 @@ export default function Riwayat() {
   if (!inKarakter && !inKonten) {
     return (
       <div className="space-y-4">
-        <h1 className="text-2xl font-extrabold text-teal-dark">Riwayat</h1>
+        <div>
+          <p className="text-teal-dark font-semibold tracking-widest text-xs uppercase mb-1">Riwayat</p>
+          <h1 className="text-2xl font-extrabold tracking-tight">Riwayat</h1>
+        </div>
         <p className="text-sm text-muted">Kamu belum terdaftar di program manapun.</p>
       </div>
     );
@@ -277,15 +295,18 @@ export default function Riwayat() {
 
   return (
     <div className="space-y-5 max-w-2xl">
-      <h1 className="text-2xl font-extrabold text-teal-dark">Riwayat</h1>
+      <div>
+        <p className="text-teal-dark font-semibold tracking-widest text-xs uppercase mb-1">Karyamu</p>
+        <h1 className="text-2xl font-extrabold tracking-tight">Riwayat</h1>
+      </div>
 
       {inKarakter && inKonten && (
         <div className="flex gap-2">
           <button className={tabCls(tab === "karakter")} onClick={() => setTab("karakter")}>
-            🎭 Karakter Saya
+            {MaskIcon} Karakter Saya
           </button>
           <button className={tabCls(tab === "video")} onClick={() => setTab("video")}>
-            🎬 Video Saya
+            {VideoIcon} Video Saya
           </button>
         </div>
       )}
