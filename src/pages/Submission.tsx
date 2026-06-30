@@ -28,6 +28,24 @@ const VideoIcon = (
   </svg>
 );
 
+const MaskIconSm = (
+  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+    <path d="M3 5h18v6a9 9 0 0 1-18 0V5Zm5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z" />
+  </svg>
+);
+const VideoIconSm = (
+  <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+    <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm6 4v8l6-4-6-4Z" />
+  </svg>
+);
+
+const tabCls = (active: boolean) =>
+  `inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition ${
+    active
+      ? "bg-gradient-to-r from-mint to-teal text-ink shadow-sm shadow-teal/30"
+      : "bg-white border border-ink/10 text-muted hover:text-ink"
+  }`;
+
 export default function Submission() {
   const { session, profile } = useAuth();
   const active = profile?.account_status === "active";
@@ -35,6 +53,7 @@ export default function Submission() {
 
   const [creator, setCreator] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [tab, setTab] = useState<"karakter" | "video">("karakter");
 
   const [msg, setMsg] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
@@ -52,6 +71,7 @@ export default function Submission() {
   async function load() {
     const { data: cr } = await supabase.from("creators").select("*").single();
     setCreator(cr);
+    if (!cr?.program_karakter && cr?.program_konten) setTab("video");
     setLoading(false);
   }
 
@@ -101,6 +121,10 @@ export default function Submission() {
   const paymentReady = hasPaymentInfo(creator);
   const canSubmit = active && paymentReady;
 
+  // Which form to show: respect tab only when in both programs.
+  const showKarakter = inKarakter && (tab === "karakter" || !inKonten);
+  const showVideo = inKonten && (tab === "video" || !inKarakter);
+
   return (
     <div className="space-y-6 max-w-2xl">
       <div>
@@ -144,8 +168,20 @@ export default function Submission() {
         <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{err}</p>
       )}
 
+      {/* Tabs — only when creator is in both programs */}
+      {inKarakter && inKonten && (
+        <div className="flex gap-2">
+          <button className={tabCls(tab === "karakter")} onClick={() => { setTab("karakter"); setMsg(null); setErr(null); }}>
+            {MaskIconSm} Karakter
+          </button>
+          <button className={tabCls(tab === "video")} onClick={() => { setTab("video"); setMsg(null); setErr(null); }}>
+            {VideoIconSm} Video
+          </button>
+        </div>
+      )}
+
       {/* CHARACTER */}
-      {inKarakter && (
+      {showKarakter && (
         <section className="rounded-2xl bg-white border border-ink/5 shadow-sm p-6 space-y-4">
           <div className="flex items-center gap-2.5">
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal/10 text-teal-dark">
@@ -203,7 +239,7 @@ export default function Submission() {
       )}
 
       {/* VIDEO */}
-      {inKonten && (
+      {showVideo && (
         <section className="rounded-2xl bg-white border border-ink/5 shadow-sm p-6 space-y-4">
           <div className="flex items-center gap-2.5">
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-cyan/10 text-cyan-dark">
