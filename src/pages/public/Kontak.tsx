@@ -7,7 +7,7 @@ import Reveal from "../../components/public/Reveal";
 const channels = [
   {
     label: "WhatsApp Admin",
-    value: "ISI: nomor / link WA admin",
+    value: "+84 373 485 762",
     desc: "Buat pertanyaan langsung soal pendaftaran, karya, atau pembayaran.",
     href: "#",
     accent: "mint",
@@ -19,7 +19,7 @@ const channels = [
   },
   {
     label: "Discord",
-    value: "ISI: link Discord",
+    value: "https://discord.gg/imely",
     desc: "Channel resmi program. Tanya tim di #chat-dengan-tim-imely.",
     href: "#",
     accent: "cyan",
@@ -31,7 +31,7 @@ const channels = [
   },
   {
     label: "Email",
-    value: "ISI: alamat email",
+    value: "info@imely.ai",
     desc: "Buat urusan resmi, kerja sama, atau pertanyaan panjang.",
     href: "#",
     accent: "cyan",
@@ -57,7 +57,7 @@ const channels = [
   },
   {
     label: "TikTok",
-    value: "ISI: @username",
+    value: "ISI: @imely.ai.id",
     desc: "Update, karakter baru, dan konten terbaru dari Imely.",
     href: "#",
     accent: "mint",
@@ -69,7 +69,7 @@ const channels = [
   },
   {
     label: "Instagram",
-    value: "ISI: @username",
+    value: "ISI: @@imely.ai.id",
     desc: "Behind the scenes dan highlight komunitas kreator.",
     href: "#",
     accent: "cyan",
